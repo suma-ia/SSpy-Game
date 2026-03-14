@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spy Game</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<h1>Spy Game</h1> <div id="setup">
+     <label>Number of Players:</label><br> 
+     <input type="number" id="players" min="1"><br> 
+     <label>Number of Spies:</label><br> <input type="number" id="spies" min="0"><br>
+      <button onclick="startGame()" >Start Game</button> 
+    </div> <div id="game" style="display:none;">
+         <h2 id="playerTurn"></h2> <button id="revealBtn" onclick="showRole()">Reveal Role</button>
+          <p id="role"></p> <button id="nextBtn" onclick="nextPlayer()">Next Player</button>
+           <h2 id="timer" style="display:none;">03:00</h2> 
+          <button id="revealSpiesBtn" onclick="revealSpies()" style="display:none;"> Reveal Spies </button>
+           <p id="spyList"></p> </div> 
+<script src="script.js"></script>
+</body>
+</html>
