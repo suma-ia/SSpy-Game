@@ -65,7 +65,7 @@ document.getElementById("playerTurn").innerText =
 
 // reset card
 document.getElementById("roleText").innerText = "";
-document.getElementById("roleImage").src = "labHenry.jpg";
+document.getElementById("roleImage").src = "purple.jpg";
 
 }
 
@@ -80,7 +80,7 @@ document.getElementById("roleText").innerText = "SPY";
 }
 else{
 
-document.getElementById("roleImage").src = "labHenry.jpg";
+document.getElementById("roleImage").src = "purple.jpg";
 document.getElementById("roleText").innerText = secretWord;
 
 }
