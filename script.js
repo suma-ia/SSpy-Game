@@ -3,10 +3,37 @@ let spies = 0;
 let roles = [];
 let currentPlayer = 0;
 
+const words = [
+"Pizza",
+"Airport",
+"School",
+"Hospital",
+"Beach",
+"Library",
+"Cinema",
+"Restaurant",
+"Hotel",
+"Park",
+"Supermarket",
+"Train",
+"Airplane",
+"Zoo",
+"Museum",
+"Space",
+"Island",
+"Desert",
+"Mountain",
+"Forest"
+];
+
+let secretWord = "";
+
 let time = 180;
 let timer = null;
 
 function startGame(){
+
+secretWord = words[Math.floor(Math.random() * words.length)];
 
 players = parseInt(document.getElementById("players").value);
 spies = parseInt(document.getElementById("spies").value);
@@ -36,15 +63,35 @@ currentPlayer = 0;
 document.getElementById("playerTurn").innerText =
 "Player " + (currentPlayer+1);
 
+// reset card
+document.getElementById("roleText").innerText = "";
+document.getElementById("roleImage").src = "labHenry.jpg";
+
 }
 
 function showRole(){
-document.getElementById("role").innerText = roles[currentPlayer];
+document.getElementById("roleImage").style.display = "block";
+
+if(roles[currentPlayer] === "Spy"){
+
+document.getElementById("roleImage").src="mrWhatsit.jpg";
+document.getElementById("roleText").innerText = "SPY";
+
+}
+else{
+
+document.getElementById("roleImage").src = "labHenry.jpg";
+document.getElementById("roleText").innerText = secretWord;
+
+}
+
 }
 
 function nextPlayer(){
 
-document.getElementById("role").innerText="";
+document.getElementById("roleText").innerText = "";
+document.getElementById("roleImage").style.display = "none";
+
 
 currentPlayer++;
 
@@ -111,6 +158,30 @@ spyPlayers.push("Player " + (i+1));
 }
 
 document.getElementById("spyList").innerText =
-"Spy is: " + spyPlayers.join(", ");
+"The spies were: " + spyPlayers.join(", ");
+
+document.getElementById("playAgainBtn").style.display = "block";
+
+}
+
+function playAgain(){
+
+document.getElementById("setup").style.display = "block";
+document.getElementById("game").style.display = "none";
+
+document.getElementById("players").value = "";
+document.getElementById("spies").value = "";
+
+document.getElementById("roleText").innerText = "";
+document.getElementById("spyList").innerText = "";
+
+document.getElementById("timer").style.display = "none";
+document.getElementById("revealSpiesBtn").style.display = "none";
+document.getElementById("playAgainBtn").style.display = "none";
+
+document.getElementById("revealBtn").style.display = "block";
+document.getElementById("nextBtn").style.display = "block";
+
+clearInterval(timer);
 
 }
